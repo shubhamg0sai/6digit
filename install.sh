@@ -28,8 +28,8 @@ chmod +x install-adb-server.sh
 bash install-adb-server.sh
 ls
 cd
-git clone https://github.com/ShuBhamg0sain/6digit-phone-pin
-cd 6digit-phone-pin
+git clone https://github.com/ShuBhamg0sain/6digit
+cd 6digit
 chmod +x 6digipincracker
 bash 6digipincracker
 
